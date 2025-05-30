@@ -15,15 +15,20 @@ export default function Login() {
     setError("");
 
     try {
-      const res = await signIn("credentials", {
-        redirect: false,
-        email,
-        password,
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
 
-      if (res?.error) {
-        setError(res.error);
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Login failed");
       } else {
+        // Simpan token ke localStorage atau cookie
+        localStorage.setItem("token", data.token);
+        // Redirect ke halaman dashboard
         window.location.href = "/kos";
       }
     } catch (err) {
