@@ -17,4 +17,4 @@ RUN npm run build
 EXPOSE 8080
 
 # Start production server
-CMD ["npm", "run", "start"]
+CMD ["npx", "next", "start", "-p", "8080"]
