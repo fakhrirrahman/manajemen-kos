@@ -1,23 +1,20 @@
-# Gunakan base image Node.js
 FROM node:18
 
 # Set working directory
 WORKDIR /app
 
-# Salin file package.json dan lock file
-COPY package*.json ./
-
 # Install dependencies
+COPY package*.json ./
 RUN npm install --legacy-peer-deps --network-timeout=100000
 
-# Salin semua file aplikasi
+# Copy project files
 COPY . .
 
-# Jalankan build Next.js
+# Build project for production
 RUN npm run build
 
-# Railway default expects app on port 8080
+# Expose Railway port
 EXPOSE 8080
 
-# Jalankan Next.js dalam production mode
+# Start production server
 CMD ["npm", "run", "start"]
