@@ -9,15 +9,15 @@ datasource db {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())  // Ubah dari String ke Int
   name      String
-  email     String    @unique
+  email     String   @unique
   password  String
-  role      Role      @default(TENANT) // TENANT or OWNER
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  koses     Kos[]     @relation("OwnerKoses")
+  koses     Kos[]    @relation("OwnerKoses")         // relasi ke Kos
   rentals   Rental[]
 }
 
@@ -34,22 +34,24 @@ model Kos {
   rooms       Room[]
 }
 
-model Room {
-  id        Int       @id @default(autoincrement())
-  kosId     Int
-  number    String    // nomor kamar, misal "A101"
-  price     Float
-  status    RoomStatus @default(AVAILABLE)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
 
-  kos       Kos       @relation(fields: [kosId], references: [id])
+model Room {
+  id        Int         @id @default(autoincrement())
+  kosId     Int
+  number    String      // Nomor kamar, misal "A101"
+  price     Float
+  status    RoomStatus  @default(AVAILABLE)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  kos       Kos         @relation(fields: [kosId], references: [id])
   rentals   Rental[]
 }
 
+
 model Rental {
   id        Int       @id @default(autoincrement())
-  userId    Int       // penyewa
+  userId    Int       // Penyewa
   roomId    Int
   startDate DateTime
   endDate   DateTime?
@@ -60,9 +62,10 @@ model Rental {
   room      Room      @relation(fields: [roomId], references: [id])
 }
 
+
 enum Role {
-  OWNER
-  TENANT
+  ADMIN
+  USER
 }
 
 enum RoomStatus {
@@ -70,3 +73,4 @@ enum RoomStatus {
   OCCUPIED
   MAINTENANCE
 }
+
