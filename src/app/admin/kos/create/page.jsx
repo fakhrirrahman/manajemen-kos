@@ -21,7 +21,6 @@ export default function CreateKosPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulasi API call
     try {
       console.log("Data yang akan dikirim:", formData);
       await new Promise((resolve) => setTimeout(resolve, 1000));

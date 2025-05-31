@@ -2,10 +2,11 @@
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import { usePathname } from "next/navigation";
-import "../../globals.css";
+import { Menu } from "lucide-react"; // gunakan icon atau ganti dengan SVG jika tidak pakai Lucide
+import "../globals.css";
 
 export default function DashboardLayout({ children }) {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false); // default: tertutup di mobile
   const pathname = usePathname();
 
   return (
@@ -17,17 +18,35 @@ export default function DashboardLayout({ children }) {
         currentPath={pathname}
       />
 
+      {/* Overlay untuk sidebar mobile */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Main Content */}
       <div
         className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${
-          sidebarOpen ? "ml-64" : "ml-20"
+          sidebarOpen ? "lg:ml-64" : "lg:ml-20"
         }`}
       >
         {/* Header */}
-        <header className="bg-white shadow-sm z-10">
-          <div className="flex items-center justify-between px-6 py-4">
+        <header className="bg-white shadow-sm z-50 relative">
+          <div className="flex items-center px-6 py-4">
             {/* Hamburger kiri */}
-            <div className="flex items-center"></div>
+            <div className="lg:hidden">
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="text-gray-600 focus:outline-none"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Spacer */}
+            <div className="flex-1" />
 
             {/* Admin kanan */}
             <div className="flex items-center space-x-4">
