@@ -9,7 +9,7 @@ export const authOptions: NextAuthOptions = {
         email: {},
         password: {},
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         if (
           credentials &&
           credentials.email === "admin@example.com" &&

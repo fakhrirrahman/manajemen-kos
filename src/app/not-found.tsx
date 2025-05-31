@@ -70,9 +70,10 @@ export default function NotFound() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
             className="text-gray-600 mb-8"
-          >
-            Oops! The page you're looking for doesn't exist or has been moved.
-          </motion.p>
+            >
+            Oops! The page you&#39;re looking for doesn&#39;t exist or has been moved.
+            </motion.p>
+
           
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
