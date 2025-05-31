@@ -40,7 +40,7 @@ export default function RegisterForm() {
         throw new Error(errorData.message || "Registration failed");
       }
 
-      router.push("/auth/login");
+      router.push("/login");
     } catch (err) {
       setError(err.message);
     } finally {
