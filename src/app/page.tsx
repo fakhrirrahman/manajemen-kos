@@ -91,7 +91,7 @@ export default function LandingPage() {
             <div className="hidden md:block">
               <div className="ml-4 flex items-center md:ml-6 space-x-4">
                 <Link
-                  href="/login"
+                  href="auth/login"
                   className="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Sign In
@@ -183,7 +183,7 @@ export default function LandingPage() {
                   Sign In
                 </Link>
                 <Link
-                  href="/register"
+                  href="auth/register"
                   className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-base font-medium transition duration-300"
                 >
                   Get Started
@@ -212,7 +212,7 @@ export default function LandingPage() {
             <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
                 <Link
-                  href="/register"
+                  href="auth/register"
                   className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                 >
                   Get started
@@ -410,7 +410,7 @@ export default function LandingPage() {
             Join hundreds of kosan owners who are managing their properties more efficiently.
           </p>
           <Link
-            href="/register"
+            href="auth/register"
             className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto"
           >
             Sign up for free
