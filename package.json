@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "ts-node --esm prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.8.2",
@@ -25,15 +26,17 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.1.8",
     "@types/bcrypt": "^5.0.2",
-    "@types/node": "^20",
+    "@types/node": "^20.17.57",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "arg": "^5.0.2",
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "postcss": "^8.5.4",
     "prisma": "^6.8.2",
     "tailwindcss": "^4.1.8",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }

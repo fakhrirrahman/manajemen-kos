@@ -1,5 +1,5 @@
-import { PrismaClient } from "../src/generated/prisma";
-import bcrypt from "bcrypt";
+const { PrismaClient } = require("../src/generated/prisma");
+const bcrypt = require("bcrypt");
 
 const prisma = new PrismaClient();
 
@@ -7,7 +7,6 @@ async function main() {
   const adminPassword = await bcrypt.hash("admin123", 10);
   const userPassword = await bcrypt.hash("user123", 10);
 
-  // Buat Admin
   await prisma.user.upsert({
     where: { email: "admin@kos.com" },
     update: {},
@@ -20,7 +19,6 @@ async function main() {
     },
   });
 
-  // Buat User Biasa
   await prisma.user.upsert({
     where: { email: "user@kos.com" },
     update: {},
