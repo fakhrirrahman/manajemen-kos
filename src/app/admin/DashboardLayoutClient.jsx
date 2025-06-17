@@ -2,11 +2,11 @@
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react"; 
+import { Menu } from "lucide-react";
 import "../globals.css";
 
 export default function DashboardLayoutClient({ children }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
 
   return (
